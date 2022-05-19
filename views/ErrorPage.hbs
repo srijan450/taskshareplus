@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            --bodyb: whitesmoke;
+            --centerb: white;
+            --headertext: black;
+            --msgtext: black;
+        }
+
+        body {
+            background: var(--bodyb);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .center {
+            margin: auto;
+            background: var(--centerb);
+            padding: 40px;
+            width: 60%;
+        }
+
+        .img {
+            text-align: center;
+            font-size: 70px;
+            color: var(--headertext);
+        }
+
+
+        .text h1 {
+            margin: 0px 0px 40px 0px;
+            text-align: center;
+            color: var(--headertext);
+            font-size: 2rem;
+        }
+
+        .msg {
+            text-transform: capitalize;
+            font-size: larger;
+            font-weight: 700;
+            text-align: center;
+            color: var(--msgtext);
+            font-size: 1.1rem;
+        }
+
+        .linkContiner {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .link {
+            text-transform: capitalize;
+            background-image: linear-gradient(90deg, #009bbe, #00def6);
+            border: 3px solid rgba(0, 0, 0, 0);
+            text-decoration: none;
+            margin: 20px auto;
+            padding: 5px 20px;
+            color: white;
+
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            transition: all 700ms;
+        }
+
+        .link:hover {
+            background: white;
+            border-color: #00def6;
+            color: #009bbe;
+        }
+
+        .info {
+            text-transform: lowercase;
+            margin-top: 30px;
+            color: red;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .center {
+                width: 80%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .center {
+                width: 95%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .center {
+                width: 95%;
+                padding: 40px 20px;
+            }
+
+            .text h1 {
+                font-size: 1.5rem;
+            }
+
+            .msg {
+                font-size: .9rem;
+            }
+
+            .info {
+                font-size: .9rem;
+            }
+        }
+    </style>
+    <title>Task App | 404 error page</title>
+</head>
+
+<body>
+    <div class="center">
+        <div class="img">
+            <i class="fa-regular fa-face-frown"></i>
+        </div>
+        <div class="text">
+            <h1 style="margin-bottom: 0;">404 Error</h1>
+            <h1>This Page Does Not Exist</h1>
+            <p class="msg">Click on following button to get back to home page!</p>
+            <p class="linkContiner">
+                <a class="link" href="#">Home</a>
+            </p>
+
+            <p class="info">page will automatically redirect to home page in <span id="timer"></span> second</p>
+        </div>
+    </div>
+    <script>
+        count = 9;
+        const x = setInterval(() => {
+            document.getElementById("timer").innerHTML = count;
+            count--;
+            if (count == 0) {
+                clearInterval(x);
+                window.location.replace("http://localhost:3000");
+            }
+        }, 1000)
+    </script>
+</body>
+
+</html>
