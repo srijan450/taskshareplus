@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/best-task-app/precache-manifest.eb2a41f1c3114e5fe255e89335fdddf4.js"
+  "/best-task-app/best-task-app/precache-manifest.79f23702f035260c3e0b350f76b1e53d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/best-task-app/index.html", {
+workbox.routing.registerNavigationRoute("/best-task-app/best-task-app/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
