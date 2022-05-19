@@ -22,7 +22,7 @@ const App = () => {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const res = await fetch("http://localhost:5000/validate-user", { credentials: 'include' });
+                const res = await fetch("https://best-task-app.herokuapp.com/validate-user", { credentials: 'include' });
                 const { user } = await res.json();
                 if (user) {
                     setUSER(user);

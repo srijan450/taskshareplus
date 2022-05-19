@@ -11,7 +11,7 @@ const NavBar = () => {
     const logout = async () => {
         setLOADER(true);
         try {
-            const res = await fetch("http://localhost:5000/sign-out", { credentials: 'include' });
+            const res = await fetch("https://best-task-app.herokuapp.com/sign-out", { credentials: 'include' });
             const { error, success } = await res.json();
             if (success) {
                 setUSER(null);

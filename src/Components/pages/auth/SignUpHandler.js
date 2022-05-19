@@ -68,7 +68,7 @@ const SignUpHandler = () => {
             if (!value.match(regex[1])) {
                 setBorder(e.target, false, "invalid username");
             } else {
-                const res = await fetch(`http://localhost:5000/ensureuniqueusername/${value}`);
+                const res = await fetch(`https://best-task-app.herokuapp.com/ensureuniqueusername/${value}`);
                 const { err } = await res.json();
                 if (err) {
                     setBorder(e.target, false, `${value} is already taken!`);
@@ -98,7 +98,7 @@ const SignUpHandler = () => {
 
             if (name && username && email && password) {
                 setLOADER(true);
-                const res = await fetch('http://localhost:5000/sign-up', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" } });
+                const res = await fetch('https://best-task-app.herokuapp.com/sign-up', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" } });
                 const response = await res.json()
                 const { error, success } = response;
                 console.log(error)

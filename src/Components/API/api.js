@@ -7,7 +7,7 @@ const api = () => {
     const getTaskApi = async (uri, loader = false) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`http://localhost:5000/${uri}`, {
+            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const api = () => {
     const postApi = async (uri, loader = false, data) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`http://localhost:5000/${uri}`, {
+            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -47,7 +47,7 @@ const api = () => {
     const patchAPI = async (uri, loader = false, data) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`http://localhost:5000/${uri}`, {
+            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
                 method: "PATCH",
                 body: JSON.stringify(data),
                 headers: {
