@@ -153,7 +153,7 @@ module.exports.resetPassword = async (req, res) => {
 
             if (user) {
                 await user.save()
-                return res.redirect("http://localhost:3000/sign-in");
+                return res.redirect("https://srijan450.github.io/sign-in");
             }
         }
         return res.render("ErrorPage");
