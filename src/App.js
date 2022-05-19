@@ -45,15 +45,15 @@ const App = () => {
                     <NavBar />
                     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '90vh', alignItems: "center", justifyContent: "center", border: "1px solid" }}>
                         <Routes>
-                            <Route exact path='/sign-up' element={<Signup />} />
-                            <Route exact path='/sign-in' element={<Signin />} />
-                            <Route exact path='/forgot-password' element={<ForgotPassword />} />
-                            <Route exact path='/main-menu' element={<Menu />} />
-                            <Route exact path='/create-new-task' element={<CreateTask />} />
-                            <Route exact path='/:name' element={<TaskCategory />} />
-                            <Route exact path='/view-task/:id' element={<TaskView />} />
-                            <Route exact path='/error-page' element={<Error404V />} />
-                            <Route exact path='/edit-task/:id' element={<EditTask />} />
+                            <Route exact path='/best-task-app/sign-up' element={<Signup />} />
+                            <Route exact path='/best-task-app/sign-in' element={<Signin />} />
+                            <Route exact path='/best-task-app/forgot-password' element={<ForgotPassword />} />
+                            <Route exact path='/best-task-app/main-menu' element={<Menu />} />
+                            <Route exact path='/best-task-app/create-new-task' element={<CreateTask />} />
+                            <Route exact path='/best-task-app/:name' element={<TaskCategory />} />
+                            <Route exact path='/best-task-app/view-task/:id' element={<TaskView />} />
+                            <Route exact path='/best-task-app/error-page' element={<Error404V />} />
+                            <Route exact path='/best-task-app/edit-task/:id' element={<EditTask />} />
                         </Routes>
                     </div>
                 </UserContext.Provider>
