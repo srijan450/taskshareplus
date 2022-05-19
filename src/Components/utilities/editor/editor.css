@@ -1,0 +1,10 @@
+.ql-toolbar{
+    
+    display: flex;
+    justify-content: center;
+
+}
+
+.ql-editor {
+    height: 180px;
+}

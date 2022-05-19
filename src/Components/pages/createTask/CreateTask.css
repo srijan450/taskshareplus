@@ -1,0 +1,45 @@
+.textarea {
+    height: 40vh;
+    resize: none;
+    overflow-y: auto;
+}
+
+input[type="date"],
+input[type="time"] {
+    font-size: larger;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    /* background: transparent; */
+    font-size: 27px;
+    outline: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+input::-webkit-datetime-edit,
+input::-webkit-inner-spin-button,
+input::-webkit-clear-button {
+    display: none;
+}
+
+.img {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+}
+
+.img img {
+    padding: 1px;
+    height: inherit;
+    width: inherit;
+    object-fit: contain;
+    border-radius: 50%;
+}

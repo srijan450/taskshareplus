@@ -1,0 +1,13 @@
+.form input {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.showpasswordbutton {
+    margin-left: -40px;
+    cursor: pointer;
+}

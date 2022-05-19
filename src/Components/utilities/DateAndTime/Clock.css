@@ -1,0 +1,10 @@
+.timer-element {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+}
+
+.element-label {
+    font-size: 10px;
+    /* text-align: right; */
+}

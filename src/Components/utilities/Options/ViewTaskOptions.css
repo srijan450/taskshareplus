@@ -1,0 +1,23 @@
+.openSetting {
+    background-color: transparent;
+    border: none;
+    display: grid;
+    place-items: center;
+    position: relative;
+
+}
+
+.openSetting:hover {
+    transform: rotateZ(90deg);
+}
+
+.setting {
+    border-radius: 20px;
+    position: fixed;
+    background-color: white;
+    right: 20px;
+    /* top: 10px; */
+    z-index: 1;
+    width: fit-content;
+    display: none;
+}

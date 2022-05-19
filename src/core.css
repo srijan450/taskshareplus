@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 100vw !important;
+    overflow-x: hidden;
+}
+
+.setIconInput {
+    /* position: absolute; */
+    margin-right: -25px;
+    margin-top: 5px;
+    z-index: 2;
+}
+
+.manageOverflow {
+    word-wrap: break-word;
+
+}
+
+.editHover,
+.deleteHover,
+.viewTaskHover,
+.markAsConpleted {
+    transition: all 500ms;
+}
+
+.markAsConpleted:hover {
+    background: #198754;
+    color: white !important;
+}
+
+.viewTaskHover:hover {
+    background: #6c757d;
+    color: white !important;
+}
+
+.editHover:hover {
+    background: #ffc107;
+    color: white !important;
+}
+
+.deleteHover:hover {
+    background: #dc3545;
+    color: white !important;
+}
+
+.backbtn {
+    display: grid;
+    place-items: center;
+    background: #52545514;
+    border: none;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: 30px !important;
+    transform: scale(1.5);
+}
+
+.backbtn:hover {
+    background: #96989961;
+}

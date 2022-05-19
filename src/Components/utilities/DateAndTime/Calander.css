@@ -1,0 +1,33 @@
+.cal-containter {
+    background-color: whitesmoke;
+    height: 100%;
+    /* width: 100%; */
+    /* color: white; */
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.cal-mon,
+.cal-day,
+.cal-year,
+.cal-date {
+    font-size: 13px;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.cal-body {
+    display: flex;
+    padding: 2px 5px;
+    border: 1px solid white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.cal-date {
+    font-size: 15px;
+    font-weight: 900;
+    color: red;
+}
