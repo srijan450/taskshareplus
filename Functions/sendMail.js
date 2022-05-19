@@ -1,4 +1,5 @@
 const nodeMailer = require("nodemailer");
+require('dotenv').config()
 
 const transport = nodeMailer.createTransport({
     host: "smtp.gmail.com",
@@ -7,7 +8,7 @@ const transport = nodeMailer.createTransport({
     requireTLS: true,
     auth: {
         user: "developer100web99@gmail.com",
-        pass: "hrrhcjtzsfwcymms"
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -16,7 +17,7 @@ const transport = nodeMailer.createTransport({
 const sendMail = async (to, link, subject = "Verify Your Email", text = "") => {
 
     const mailOptions = {
-        from: "developer100web99@gmail.com",
+        from: "The Best Task APP",
         to,
         subject,
         text,

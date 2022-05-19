@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+require('dotenv').config()
 
-mongoose.connect("mongodb://localhost:27017/task_app", {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.78mk3.mongodb.net/task_app`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
