@@ -6,11 +6,8 @@ require("hbs");
 const cookieParser = require("cookie-parser");
 const taskRoute = require("./Routes/TaskRoutes");
 const bodyparser = require("body-parser");
-const multer = require('multer');
-const upload = multer();
 
-
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 const app = express();
 const options = {
     origin: 'http://localhost:3000',
