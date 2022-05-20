@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
             type: String,
             trim: true,
             unique: true,
-            required: [true, "username is required"]
+            // required: [true, "username is required"]
         }
     }]
 });
