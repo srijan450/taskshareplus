@@ -28,8 +28,8 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 app.set("view engine", "hbs");
 app.use(cookieParser());
-app.use(userRoute);
 app.use(taskRoute);
+app.use(userRoute);
 
 app.listen(port, () => {
     console.log(`server started at port ${port}`);
