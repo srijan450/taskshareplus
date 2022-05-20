@@ -67,10 +67,11 @@ module.exports.signIn = async (req, res) => {
         const request = Object.keys(req.body);
         const validRequest = ["email_user", "password"];
         const isValidRequest = request.every((requested) => validRequest.includes(requested));
-        if (!isValidRequest || request.length <= 2) {
+        if (!isValidRequest || request.length < 2) {
             res.status(400).send("Invalid Access!");
             return;
         }
+
 
         const userReq = await userModel.findByCredentials(req.body);
         if (userReq) {
