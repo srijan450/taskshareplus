@@ -10,7 +10,7 @@ const bodyparser = require("body-parser");
 const port = process.env.PORT || 5000;
 const app = express();
 const options = {
-    origin: 'http://localhost:3000',// 'https://srijan450.github.io',
+    origin: 'https://srijan450.github.io',
     credentials: true,
     optionSuccessStatus: 200
 }
