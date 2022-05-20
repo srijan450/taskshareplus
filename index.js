@@ -10,7 +10,7 @@ const bodyparser = require("body-parser");
 const port = process.env.PORT || 5000;
 const app = express();
 const options = {
-    origin: 'https://srijan450.github.io/best-task-app',
+    origin: 'https://srijan450.github.io',
     credentials: true,
     optionSuccessStatus: 200
 }
