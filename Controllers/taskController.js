@@ -1,15 +1,11 @@
-const { log } = require("console");
 const sharingModel = require("../models/sharingModel");
 const taskModal = require("../models/taskModal");
 
-
 module.exports.createTask = async (req, res) => {
     const request = Object.keys(req.body);
-    console.log(request);
-    console.log(req.body);
     const validRequest = ["header", "body", "durationTime", "durationDate", "taskIcon", "shared", "sharewith", "createdDate"];
     const isValidRequest = request.every((requested) => validRequest.includes(requested));
-    if (!isValidRequest || !req.body.header || (req.body.shared ^ req.body.sharewith)) {
+    if (!isValidRequest || !req.body.header || !req.createdDate || (req.body.shared ^ req.body.sharewith)) {
         res.status(400).json({ error: "Invalid Access" });
         return;
     }
@@ -39,8 +35,8 @@ module.exports.createTask = async (req, res) => {
     }
 
     catch (e) {
-        console.log(e);
-        res.status(500).send({ error: "server error" })
+
+        res.status(500).send({ error: e })
     }
 }
 
