@@ -1,9 +1,14 @@
 import React from 'react'
 
 const Modal = ({ data: { show, header, body, success, setshowmodal }, modalHandler }) => {
-    const handler = () => {
+    const handlerShow = () => {
         window.$(document).ready(() => {
             window.$('#modal').modal('show');
+        });
+    }
+    const heandlerHide = () => {
+        window.$(document).ready(() => {
+            window.$('#modal').modal('hide');
         });
     }
     return (
@@ -24,7 +29,7 @@ const Modal = ({ data: { show, header, body, success, setshowmodal }, modalHandl
                 </div>
             </div>
 
-            {show ? handler() : ''}
+            {show ? handlerShow() : heandlerHide()}
         </>
     )
 }

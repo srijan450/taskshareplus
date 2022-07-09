@@ -3,15 +3,17 @@ import { useParams, Navigate } from 'react-router-dom'
 import api from '../../API/api';
 import Calander from '../../utilities/DateAndTime/Calander';
 import Timer from '../../utilities/DateAndTime/Timer';
-import Editor from '../../utilities/editor/Editor';
 import ViewTaskOptions from '../../utilities/Options/ViewTaskOptions';
 
 import "./TaskView.css";
 import Button from '../../utilities/Navigation/Button';
+import { useContext } from 'react';
+import { UserContext } from '../../../Context';
 const TaskView = () => {
+    const { USER } = useContext(UserContext);
     const { id } = useParams("id");
     const { getTaskApi } = api();
-    const [task, settask] = useState({});
+    const [task, settask] = useState(null);
     const [error, seterror] = useState(false);
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const TaskView = () => {
         return <Navigate to='/error-page' />
 
     return (
-        <div className='w-100 py-4 px-4' style={{ minHeight: '90vh' }}>
+        task && <div className='w-100 py-4 px-4' style={{ minHeight: '90vh' }}>
 
             <div className='shadow py-5 px-4'>
                 <div className='border border-danger p-1' style={{ borderRadius: "20px" }}>
@@ -45,7 +47,7 @@ const TaskView = () => {
                             <div className='col-8 text-end'>
                                 <div className='d-flex justify-content-end align-items-center'>
                                     {task.durationDate && task.durationTime ? <Timer date={task.durationDate} time={task.durationTime} /> : ''}
-                                    <div className='mx-4'><ViewTaskOptions id={task._id} /></div>
+                                    {USER._id === task.owner && <div className='mx-4'><ViewTaskOptions id={task._id} completed={task.completed} /></div>}
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, Navigate } from 'react-router-dom'
 import Calander from '../DateAndTime/Calander'
 import Timer from '../DateAndTime/Timer'
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -7,12 +7,21 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import "./style.css"
-const TaskInfo = ({ data: { _id, header, body, durationDate, durationTime, createdDate, taskIcon, completed } }) => {
+import { UserContext } from '../../../Context';
+import api from '../../API/api';
+const TaskInfo = ({ data: { _id, owner, header, body, durationDate, durationTime, createdDate, taskIcon, completed }, removeCompletedTask, name, ind, deleteTask }) => {
+
+    const { deleteTaskHandler } = api();
+
+    const { USER } = useContext(UserContext);
     const allowedHeader = (str) => {
         if (str.length > 60)
             return `${str.substring(0, 60)}...`
         return str
     }
+
+    if (!USER)
+        return <Navigate to='/' />
     return (
         <div className='py-2 px-4 border m-2'>
             <div className='row justify-content-between' style={{ alignItems: 'center' }} >
@@ -32,10 +41,14 @@ const TaskInfo = ({ data: { _id, header, body, durationDate, durationTime, creat
                 <div className='col-3 d-flex justify-content-start'>
                     <Link to={`/view-task/${_id}`} className="btn viewTaskHover me-3" title='View Task'><AssignmentIcon /></Link>
 
-                    {!completed ? <><Link to={`/edit-task/${_id}`} className="btn markAsConpleted me-3" title='MArk As Completed Task'><AssignmentTurnedInIcon /></Link>
+                    {!completed && USER._id === owner ? <><button onClick={() => removeCompletedTask(_id, name, ind)} className="btn markAsConpleted me-3" title='MArk As Completed Task'><AssignmentTurnedInIcon /></button>
                         <Link to={`/edit-task/${_id}`} className="btn editHover me-3" title='Edit Task'><EditIcon /></Link></>
                         : ''}
-                    <Link to={`/edit-task/${_id}`} className="btn deleteHover" title='Delete Task'><DeleteIcon /></Link>
+
+                    {
+                        USER._id === owner && <><button onClick={() => deleteTask(_id, name, ind)} className="btn deleteHover" title='Delete Task'><DeleteIcon /></button></>
+                    }
+
                 </div>
                 <div className='col-2 text-end'>
                     <Calander date={createdDate} text="created date" />

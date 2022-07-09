@@ -26,13 +26,12 @@ const CreateTask = () => {
     const handler = (e) => {
         const { name, value, files } = e.target;
         if (name === "taskIcon") {
-            const type = files[0].type;
-            if (type === "image/jpg" || type === "image/png" || type === "image/jepg") {
+            if (files[0].type.split("/")[0] === "image") {
                 setfdata({ ...fdata, [name]: files[0] })
                 const [file] = files;
                 document.getElementById("iconImage").src = URL.createObjectURL(file);
             } else {
-                setMODAL({ show: true, header: <><span className="text-danger">Task Icon should be image</span></>, body: <><span className="text-dark">Task Icon should be of image (.png, .jpeg, .jpg) format.</span></>, success: false });
+                setMODAL({ show: true, header: <><span className="text-danger">Task Icon should be image</span></>, body: <><span className="text-dark">Task Icon should be of image format.</span></>, success: false });
             }
         }
         else {
@@ -125,7 +124,7 @@ const CreateTask = () => {
                         <div className='d-flex'>
                             <label htmlFor="image">
                                 <div className='img'>
-                                    <img src="./images/no-image.jpg" id="iconImage" alt="cannot display image" title='task icon' />
+                                    <img src="https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg" id="iconImage" alt="cannot display image" title='task icon' />
                                 </div>
                                 <input type="file" id="image" name="taskIcon" className='d-none' accept=".png, .jpg, .jpeg" onChange={handler} value={fdata.iconImage} form="createTaskform" />
                             </label>

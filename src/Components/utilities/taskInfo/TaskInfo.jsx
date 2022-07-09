@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TaskInfoAccordion from '../taskInfoComponent/TaskInfoAccordion'
 import api from '../../API/api';
 
-const TaskInfo = ({ action }) => {
+const TaskInfo = ({ action, notask }) => {
     const { getTaskApi } = api();
     const [tasks, settasks] = useState([])
 
@@ -14,13 +14,13 @@ const TaskInfo = ({ action }) => {
             else if (action === 'completed')
                 seturi.uri = 'task?completed=true&limit=3&sortby=updatedAt:desc'
             else if (action === 'shared')
-                seturi.uri = 'task?limit=3&sortby=updatedAt:desc&shared=true'
+                seturi.uri = 'shared-task?limit=3&sortBy=desc'
             else if (action === 'pending')
                 seturi.uri = 'task?limit=3&sortby=updatedAt:desc&pending=true'
             else if (action === 'pendingshared')
-                seturi.uri = 'task?limit=3&sortby=updatedAt:desc&pending=true&shared=true'
+                seturi.uri = 'shared-task?limit=3&sortBy=desc&pending=true'
             else if (action === 'completedshared')
-                seturi.uri = 'task?completed=true&limit=3&sortby=updatedAt:desc&shared=true'
+                seturi.uri = 'shared-task?limit=3&sortBy=desc&completed=true'
             const res = await getTaskApi(seturi.uri);
             const { error, task } = res;
             if (task)
@@ -37,7 +37,7 @@ const TaskInfo = ({ action }) => {
                     <TaskInfoAccordion data={data} key={data._id} action={action} />
                 </>)}
             </div>
-            {tasks.length == 0 ? <div>Create Your Tasks to display here</div> : ''}
+            {tasks.length == 0 ? <div className='text-danger'>{notask}</div> : ''}
         </>
     )
 }

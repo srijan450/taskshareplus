@@ -13,6 +13,7 @@ import TaskCategory from './Components/pages/TaskCategory/TaskCategory';
 import TaskView from './Components/pages/ViewTask/TaskView';
 import Error404V from './Components/pages/404Error/Error404V';
 import EditTask from './Components/pages/editTask/EditTask.jsx';
+import Profile from './Components/pages/profile/Profile';
 
 const App = () => {
     const [USER, setUSER] = useState(null);
@@ -22,7 +23,7 @@ const App = () => {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const res = await fetch("https://best-task-app.herokuapp.com/validate-user", { credentials: 'include' });
+                const res = await fetch("https://best-task-app.herokuapp.com/validate-user", { credentials: 'include', method: 'GET' });
                 const { user } = await res.json();
                 if (user) {
                     setUSER(user);
@@ -54,6 +55,7 @@ const App = () => {
                             <Route exact path='/view-task/:id' element={<TaskView />} />
                             <Route exact path='/error-page' element={<Error404V />} />
                             <Route exact path='/edit-task/:id' element={<EditTask />} />
+                            <Route exact path='/profile' element={<Profile />} />
                         </Routes>
                     </div>
                 </UserContext.Provider>

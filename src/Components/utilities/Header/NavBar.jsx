@@ -25,7 +25,7 @@ const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light mb-0">
             <div className="container">
                 <a className="navbar-brand" href="#">
-                    <img src="./images/header.png" alt="" width="30" height="24" className="d-inline-block align-text-top" />
+                    <img src="https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/header.png" alt="" width="30" height="24" className="d-inline-block align-text-top" />
                     &nbsp;Task App
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

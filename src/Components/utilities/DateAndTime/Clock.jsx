@@ -4,16 +4,20 @@ import './Clock.css';
 const Clock = ({ time, date, _id, createdDate }) => {
     const [hhmmss, sethhmmss] = useState({ yy: "00", dd: "000", hh: "00", mm: "00", ss: "00" })
     const { getTaskApi } = api();
+    // console.log(time, "time");
+    // console.log(date, "date")
+    // console.log(createdDate, "cdate");
 
     useEffect(() => {
         const timer = setInterval(async () => {
             let remainingTime;
-            if (date && time)
-                remainingTime = (new Date(date).setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date(createdDate));
+            if (date && time) {
+                remainingTime = (new Date(date).setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date());
+            }
             else if (time)
-                remainingTime = (new Date().setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date(createdDate));
+                remainingTime = (new Date().setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date());
             else if (date)
-                remainingTime = (new Date(date) - new Date(createdDate));
+                remainingTime = (new Date(date) - new Date());
             if (remainingTime > 0) {
                 sethhmmss(() => {
                     let seconds = Math.floor(remainingTime / 1000);

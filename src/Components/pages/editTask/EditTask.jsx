@@ -20,7 +20,8 @@ const EditTask = () => {
     const [sharewith, setsharewith] = useState([]); // for selected users defaults friends 
     const [showFriends, setshowFriends] = useState(false) // show sidebar 2nd container
     const [friends, setfriends] = useState([]); // show previous friends
-    const { getTaskApi } = api()
+    const { getTaskApi } = api();
+    const [redirect, setredirect] = useState(false);
 
     const { id } = useParams("id");
 
@@ -35,7 +36,6 @@ const EditTask = () => {
                 delete task.createdDate;
                 delete task.completed;
                 delete task.pending;
-                delete task.owner;
                 delete task.createdAt;
                 delete task.updatedAt;
                 setfdata(task);
@@ -44,17 +44,23 @@ const EditTask = () => {
         fetchTask();
     }, [])
 
+    useEffect(() => {
+        if (fdata && fdata.owner !== USER._id) {
+            setredirect(true);
+        }
+
+    }, [fdata])
+
 
     const handler = (e) => {
         const { name, value, files } = e.target;
         if (name === "taskIcon") {
-            const type = files[0].type;
-            if (type === "image/jpg" || type === "image/png" || type === "image/jepg") {
+            if (files[0].type.split("/")[0] === "image") {
                 setfdata({ ...fdata, [name]: files[0] })
                 const [file] = files;
                 document.getElementById("iconImage").src = URL.createObjectURL(file);
             } else {
-                setMODAL({ show: true, header: <><span className="text-danger">Task Icon should be image</span></>, body: <><span className="text-dark">Task Icon should be of image (.png, .jpeg, .jpg) format.</span></>, success: false });
+                setMODAL({ show: true, header: <><span className="text-danger">Task Icon should be image</span></>, body: <><span className="text-dark">Task Icon should be of image format.</span></>, success: false });
             }
         }
         else {
@@ -144,8 +150,8 @@ const EditTask = () => {
         setshowFriends(true);
     }
 
-    // if (!USER)
-    //     return <Navigate to='/sign-in' />
+    if (!USER || redirect)
+        return <Navigate to='/sign-in' />
 
     return (
         <>

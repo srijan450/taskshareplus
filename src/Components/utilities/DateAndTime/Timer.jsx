@@ -9,10 +9,10 @@ const Timer = ({ time, date, _id, createdDate }) => {
         const timer = setInterval(async () => {
             let remainingTime;
             if (date && time)
-                remainingTime = (new Date(date).setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date(createdDate));
+                remainingTime = (new Date(date).setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date());
             else if (time)
-                remainingTime = (new Date().setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date(createdDate));
-            else if (date) { remainingTime = (new Date(date) - new Date(createdDate)); console.log(remainingTime); }
+                remainingTime = (new Date().setHours(parseInt(time.split(":")[0]), parseInt(time.split(":")[1]), 0) - new Date());
+            else if (date) { remainingTime = (new Date(date) - new Date()); console.log(remainingTime); }
             if (remainingTime > 0) {
                 sethhmmss(() => {
                     let seconds = Math.floor(remainingTime / 1000);

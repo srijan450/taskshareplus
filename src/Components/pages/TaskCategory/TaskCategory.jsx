@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import Button from '../../utilities/Navigation/Button';
+import Paginate from '../../utilities/pagination/Paginate';
 import TaskInfo from '../../utilities/Tasks-info-deep/TaskInfo';
 import TaskCategoryHandler from './TaskCategoryHandler';
 
 const TaskCategory = () => {
     const { name } = useParams("name");
-    const { verifyTaskCategoryAndRespond, tasks, settasks } = TaskCategoryHandler();
+    const { verifyTaskCategoryAndRespond, tasks, settasks, previousHandler, nextHandler, skip, removeCompletedTask, deleteTask } = TaskCategoryHandler();
     const [redirect, setredirect] = useState(false)
     useEffect(() => {
         const doStuff = async () => {
             setredirect(await verifyTaskCategoryAndRespond(name.trim()));
         }
         doStuff();
-    }, []);
+    }, [skip]);
+
+
 
     const setName = () => {
         switch (name) {
             case "completed-tasks":
                 return "Completed Task";
+            case "pending-tasks":
+                return "Pending Task";
+            case "shared-tasks":
+                return "Shared Task";
+            case "completed-shared-tasks":
+                return "Completed Shared Task";
+            case "pending-shared-tasks":
+                return "Pending Shared Task";
             default: {
 
                 return "Your Tasks"
@@ -44,8 +55,10 @@ const TaskCategory = () => {
             </div>
 
             <div className='row px-5 justify-content-between' style={{ maxHeight: "77vh", overflowY: 'auto', overflowX: 'hidden' }}>
-                {tasks.map((items) => <TaskInfo data={items} />)}
+                {tasks.map((items, ind) => <TaskInfo data={items} removeCompletedTask={removeCompletedTask} name={name} ind={ind} deleteTask={deleteTask} />)}
             </div>
+
+            <Paginate nextHandler={nextHandler} previousHandler={previousHandler} />
         </div>
     )
 }

@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
+import { useContext } from 'react';
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../../Context';
 import api from '../../API/api'
 import DateAndTime from '../DateAndTime/DateAndTime';
 
-const TasckInfoAccordion = ({ data: { header, body, durationDate, createdDate, durationTime, _id, completed }, action }) => {
+const TasckInfoAccordion = ({ data: { header, body, durationDate, createdDate, durationTime, _id, completed, owner }, action }) => {
+    const { USER } = useContext(UserContext);
     const { getTaskApi } = api();
     const markAsCompleted = async () => {
         await getTaskApi(`task/mark-as/${_id}?completed=true`);
@@ -25,7 +28,8 @@ const TasckInfoAccordion = ({ data: { header, body, durationDate, createdDate, d
             <div id={`qw${_id}`} className="accordion-collapse collapse" aria-labelledby={`#ab${_id}`}>
                 <div className="accordion-body pb-2" dangerouslySetInnerHTML={{ __html: body }} style={{ maxHeight: "80px", overflow: "hidden" }}></div>
                 <div className='mt-0 text-end px-4 py-2'>
-                    {action !== 'completed' ? <span className='nav-link d-inline' style={{ cursor: "pointer" }} onClick={markAsCompleted}>mark as completed</span> : ''}
+
+                    {(action === 'completed' || action === 'completedshared' || (action === "shared" && owner !== USER._id) || (action === "pendingshared" && owner !== USER._id)) ? '' : <span className='nav-link d-inline' style={{ cursor: "pointer" }} onClick={markAsCompleted}>mark as completed</span>}
                     <Link to={`/view-task/${_id}`} className='nav-link d-inline'>Go to this task</Link>
                 </div>
             </div>

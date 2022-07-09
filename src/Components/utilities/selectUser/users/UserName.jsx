@@ -20,7 +20,7 @@ const UserName = ({ username, send, setsend, sendHandler }) => {
         <div className='d-flex align-items-center justify-content-between border px-2 py-2'>
             <div className="d-flex align-items-center">
                 <div className='usericon'>
-                    <img src="./images/nouserimage.webp" alt="cannot display image" title='user image' />
+                    <img src="https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/nouserimage.webp" alt="cannot display image" title='user image' />
                 </div>
                 <h6 className='mx-2 text-uppercase py-0'>{username}</h6>
             </div>
