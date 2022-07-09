@@ -77,7 +77,7 @@ module.exports.signIn = async (req, res) => {
         const userReq = await userModel.findByCredentials(req.body);
         if (userReq) {
             const token = await userReq.genrateToken();
-            res.cookie('token', token, { httpsOnly: true, });
+            res.cookie('token', token, { httpsOnly: true, domain: "https://best-task-app.herokuapp.com" });
             res.status(201).json({ success: true, error: false, user: userReq });
         }
         else {
