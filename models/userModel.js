@@ -49,6 +49,7 @@ const userSchema = new mongoose.Schema({
         username: {
             type: String,
             trim: true,
+            sparse: true
             // unique: true,
             // required: [true, "username is required"]
         }
@@ -101,7 +102,6 @@ userSchema.methods.toJSON = function () {
     const obj = user.toObject();
     delete obj.password
     delete obj.tokens
-    delete obj._id
     return obj;
 }
 userSchema.statics.passwordReset = async function (email) {

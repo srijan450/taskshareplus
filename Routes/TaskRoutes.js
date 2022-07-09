@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getTasks, createTask, getTaskImage, getTaskById, getAllTasks, markAs, searchByHeader, editTask, test } = require("../Controllers/taskController");
+const { getTasks, createTask, getTaskImage, getTaskById, getAllTasks, markAs, searchByHeader, editTask, test, deleteTask, getSharedTasks, getTaskCount } = require("../Controllers/taskController");
 const multer = require("multer");
 const authenticate = require("../authentication/auth");
 
@@ -17,7 +17,10 @@ taskRoute.get("/taskimage/:_id", authenticate, getTaskImage);
 taskRoute.get("/task/:id", authenticate, getTaskById);
 taskRoute.patch("/task/:id", authenticate, upload.single("taskIcon"), editTask);
 taskRoute.get("/task", authenticate, getAllTasks);
+// taskRoute.get("/task-count", authenticate, getTaskCount);
+taskRoute.get("/shared-task", authenticate, getSharedTasks)
 taskRoute.get("/task/mark-as/:_id", authenticate, markAs);
 taskRoute.get("/search-by-heading", authenticate, searchByHeader);
+taskRoute.delete("/task/:id", authenticate, deleteTask)
 
 module.exports = taskRoute;

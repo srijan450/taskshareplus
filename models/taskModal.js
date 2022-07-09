@@ -42,7 +42,16 @@ const taskSchema = new mongoose.Schema({
         required: true,
         trim: true,
         ref: "User"
-    }
+    },
+    sharewith: [
+        {
+            username: {
+                type: String,
+                trim: true,
+                sparse: true
+            }
+        }
+    ]
 }, {
     timestamps: true
 });

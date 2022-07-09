@@ -10,7 +10,7 @@ const bodyparser = require("body-parser");
 const port = process.env.PORT || 5000;
 const app = express();
 const options = {
-    origin: 'https://srijan450.github.io',
+    origin: 'http://localhost:3000',
     credentials: true,
     optionSuccessStatus: 200
 }
@@ -23,7 +23,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!')
 })
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.urlencoded({ extended: true }));
 // app.use(multer().any())
 
 app.set("view engine", "hbs");

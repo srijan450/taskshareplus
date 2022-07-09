@@ -19,6 +19,7 @@ module.exports.ensureUniqueUserName = async (req, res) => {
 }
 
 module.exports.signUp = async (req, res) => {
+    console.log(req.body);
     try {
         const request = Object.keys(req.body);
         const validRequest = ["name", "email", "password", "username"];
@@ -28,7 +29,7 @@ module.exports.signUp = async (req, res) => {
             return;
         }
         req.body.password = await hashPassword(req.body.password);
-        const userReq = new userModel({ ...req.body, friends: [] });
+        const userReq = new userModel({ ...req.body });
         await userReq.save();
         const mailed = await userReq.sendVerificationEmail();
         if (mailed) {
@@ -76,7 +77,7 @@ module.exports.signIn = async (req, res) => {
         const userReq = await userModel.findByCredentials(req.body);
         if (userReq) {
             const token = await userReq.genrateToken();
-            res.cookie('token', token, { httpOnly: true, });
+            res.cookie('token', token, { httpsOnly: true, });
             res.status(201).json({ success: true, error: false, user: userReq });
         }
         else {
