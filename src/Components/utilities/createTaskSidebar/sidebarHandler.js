@@ -3,6 +3,7 @@ import { CreateTaskContext } from '../../../Context';
 
 const sidebarHandler = () => {
     const { setuser, setshowFriends } = useContext(CreateTaskContext);
+
     const setBorder = (e, val = false, reset = false) => {
         if (val) {
             e.style.borderColor = "#28a745";
@@ -13,6 +14,7 @@ const sidebarHandler = () => {
             e.style.boxShadow = "0 0 0 0.2rem rgba(167, 40, 40, 0.25)";
         }
         if (reset) {
+            console.log(e);
             e.style.borderColor = "transparent";
             e.style.boxShadow = "0 0 0 0.2rem rgba(167, 40, 40, 0)";
             e.classList.add('border')
@@ -30,7 +32,13 @@ const sidebarHandler = () => {
         }
     }
 
-    return { usernameHandler, setBorder }
+    const cancleButtonHandler = () => {
+        setuser("");
+        setBorder(document.getElementById("searchUser"), false, true);
+        setshowFriends(true);
+    }
+
+    return { usernameHandler, setBorder, cancleButtonHandler }
 }
 
 export default sidebarHandler

@@ -17,9 +17,9 @@ const CreateTask = () => {
     const [user, setuser] = useState("")//input box 
     const [users, setusers] = useState([]);// to store data from search API
     const [sharewith, setsharewith] = useState([]); // for selected users defaults friends 
-    const [showFriends, setshowFriends] = useState(false) // show sidebar 2nd container
+    const [showFriends, setshowFriends] = useState(true) // show sidebar 2nd container
     const [friends, setfriends] = useState([]); // show previous friends
-    const { getTaskApi } = api()
+    const { getToken } = api()
 
     const { id } = useParams("id");
 
@@ -81,10 +81,10 @@ const CreateTask = () => {
             }
             console.log(new Date());
             try {
-                const res = await Axios.post("https://best-task-app.herokuapp.com/create-task", formdata, { withCredentials: true });
+                const token = getToken();
+                const res = await Axios.post("http://localhost:5000/create-task", formdata, { headers: { authtoken: token } });
 
                 const { data: { error, task } } = res;
-                console.log(res);
                 if (error) {
                     console.log(error);
                 } else {
@@ -107,11 +107,6 @@ const CreateTask = () => {
         setLOADER(false);
     }
 
-    const cancleButtonHandler = () => {
-        setuser("");
-        setBorder(document.getElementById("searchUser"), false, true);
-        setshowFriends(true);
-    }
 
     // if (!USER)
     //     return <Navigate to='/sign-in' />
@@ -165,7 +160,7 @@ const CreateTask = () => {
                         </div>
                     </form>
                 </div>
-                {fdata.shared ? <CreateTaskContext.Provider value={{ user, setuser, users, setusers, sharewith, setsharewith, showFriends, setshowFriends, friends, setfriends, cancleButtonHandler }}><Sidebar /></CreateTaskContext.Provider> : ''}
+                {fdata.shared ? <CreateTaskContext.Provider value={{ user, setuser, users, setusers, sharewith, setsharewith, showFriends, setshowFriends, friends, setfriends }}><Sidebar /></CreateTaskContext.Provider> : ''}
             </div>
         </>
     )

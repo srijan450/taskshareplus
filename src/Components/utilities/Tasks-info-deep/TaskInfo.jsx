@@ -27,7 +27,7 @@ const TaskInfo = ({ data: { _id, owner, header, body, durationDate, durationTime
             <div className='row justify-content-between' style={{ alignItems: 'center' }} >
                 <div className='row col-10 ' style={{ alignItems: 'center' }} >
                     <div className='img col-1'>
-                        <img src={taskIcon !== "" ? `https://best-task-app.herokuapp.com/taskimage/${_id}` : "/images/no-image.jpg"} alt="" />
+                        <img src={taskIcon !== "" ? `http://localhost:5000/taskimage/${_id}` : "/images/no-image.jpg"} alt="" />
                     </div>
                     <h3 className='col-11 manageOverflow overflow-hidden'><Link to={`/view-task/${_id}`} className=' text-decoration-none text-dark'>{allowedHeader(header)}</Link></h3>
                 </div>

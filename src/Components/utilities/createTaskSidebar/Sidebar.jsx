@@ -6,8 +6,8 @@ import "./sidebar.css"
 import SelectContainer from "../selectUser/SelectContainer.jsx";
 import { CreateTaskContext } from "../../../Context.js";
 const Sidebar = () => {
-    const { usernameHandler } = sidebarHandler();
-    const { user, showFriends, cancleButtonHandler } = useContext(CreateTaskContext);
+    const { usernameHandler, cancleButtonHandler } = sidebarHandler();
+    const { user, showFriends } = useContext(CreateTaskContext);
 
 
     return (
@@ -22,7 +22,7 @@ const Sidebar = () => {
                         <button className="btn btn-light" onClick={cancleButtonHandler}>clear</button>
                     </div>
 
-                    {!showFriends ? <SelectContainer user={user} /> : <SelectContainer user={''} showFriends={showFriends} />}
+                    {showFriends ? <SelectContainer /> : <SelectContainer showFriends={showFriends} />}
                 </div>
             </div>
         </div >

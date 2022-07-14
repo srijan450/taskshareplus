@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Popups, UserContext } from '../../../Context';
+import api from '../../API/api';
 
 
 const regex = [/^[_]{1,2}[a-z]{4,}[0-9]{0,3}[.]{0,2}[_]{0,2}$/, /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/];
@@ -7,6 +8,7 @@ const regex = [/^[_]{1,2}[a-z]{4,}[0-9]{0,3}[.]{0,2}[_]{0,2}$/, /^(([^<>()[\]\\.
 const SignInHandler = () => {
     const { setLOADER, setMODAL } = useContext(Popups);
     const { setUSER } = useContext(UserContext);
+    const { loginauth } = api();
 
     const [ferror, setferror] = useState({ email_user: "", password: "", email_userecolor: "", passwordecolor: "" });
     const [fdata, setfdata] = useState({ email_user: "", password: "" });
@@ -82,9 +84,9 @@ const SignInHandler = () => {
 
             if (email_user && password) {
                 setLOADER(true);
-                const res = await fetch('https://best-task-app.herokuapp.com/sign-in', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" }, credentials: 'include' });
+                const res = await fetch('http://localhost:5000/sign-in', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" }, credentials: 'include' });
                 const response = await res.json()
-                const { error, success, user } = response;
+                const { error, success, user, token } = response;
                 if (error && !success) {
                     if (error.email) {
                         setBorder(e.target.elements.email_user, false, error.email);
@@ -97,15 +99,15 @@ const SignInHandler = () => {
                 }
                 else if (success) {
                     setfdata({ email_user: "", password: "" })
-                    if (user)
-                        setUSER(user);
+                    loginauth(user,token);
                 }
                 setLOADER(false);
             }
         }
         catch (e) {
             setLOADER(false);
-            setMODAL({ show: true, header: <><span className="text-danger">No Internet</span></>, body: <><span className="text-danger">You are not connected to internet!</span></>, success: false });
+            console.log(e);
+            setMODAL({ show: true, header: <><span className="text-danger">Login Failed</span></>, body: <><span className="text-danger">Cannot log you in at this moment!</span></>, success: false });
         }
     }
     return { fieldset, ferror, fdata, passwordHandler, usernameHandler, submitHandler };

@@ -2,17 +2,18 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { CreateTaskContext } from '../../../../Context';
 import api from "../../../API/api";
 
-const UserName = ({ username, send, setsend, sendHandler }) => {
+const UserName = ({ username, sendHandler }) => {
 
     const { user, sharewith, setsharewith, friends, setfriends, users } = useContext(CreateTaskContext)
 
-
+    const [send, setsend] = useState("select");
     useEffect(() => {
-        if (friends.includes(username)) {
-            setsend("remove")
-        } else {
-            setsend("select")
-        }
+        if (friends.length > 0)
+            if (friends.includes(username)) {
+                setsend("remove")
+            } else {
+                setsend("select")
+            }
     }, [[], user, friends, users])
 
 

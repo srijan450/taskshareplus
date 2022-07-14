@@ -14,6 +14,9 @@ import TaskView from './Components/pages/ViewTask/TaskView';
 import Error404V from './Components/pages/404Error/Error404V';
 import EditTask from './Components/pages/editTask/EditTask.jsx';
 import Profile from './Components/pages/profile/Profile';
+import api from './Components/API/api';
+import Home from './Components/pages/home/Home';
+import Features from './Components/pages/features/Features';
 
 const App = () => {
     const [USER, setUSER] = useState(null);
@@ -21,21 +24,35 @@ const App = () => {
     const [MODAL, setMODAL] = useState({ show: false, header: "", body: "", success: false });
 
     useEffect(() => {
-        const fetchApi = async () => {
+        const authenticate = async () => {
+
             try {
-                const res = await fetch("https://best-task-app.herokuapp.com/validate-user", { credentials: 'include', method: 'GET' });
-                const { user } = await res.json();
-                if (user) {
-                    setUSER(user);
+                if (localStorage.getItem('token')) {
+                    const token = JSON.parse(localStorage.getItem('token'));
+                    const res = await fetch("http://localhost:5000/validate-user", {
+                        method: 'POST', headers: {
+                            'authtoken': token,
+                            'Accept': 'application/json'
+                        }
+                    });
+                    const { user } = await res.json();
+                    if (user)
+                        setUSER(user);
+                    else
+                        setUSER(null);
+                } else {
+                    setUSER(null);
                 }
-            } catch (e) {
+            }
+            catch (e) {
                 console.log(e);
                 setMODAL({
-                    show: true, header: <><span className="text-danger">No Internet</span></>, body: <><span className="text-danger">You are not connected to internet!</span></>, success: false
+                    show: true, header: <><span className="text-danger">Authentication Error</span></>, body: <><span className="text-danger">There is some error in Authenticating you with server.</span></>, success: false
                 });
+                setUSER(null);
             }
         }
-        fetchApi();
+        authenticate();
     }, [USER]);
 
 
@@ -46,6 +63,8 @@ const App = () => {
                     <NavBar />
                     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '90vh', alignItems: "center", justifyContent: "center", border: "1px solid" }}>
                         <Routes>
+                            <Route exact path='/' element={<Home />} />
+                            <Route exact path='/features' element={<Features />} />
                             <Route exact path='/sign-up' element={<Signup />} />
                             <Route exact path='/sign-in' element={<Signin />} />
                             <Route exact path='/forgot-password' element={<ForgotPassword />} />

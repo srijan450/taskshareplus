@@ -9,14 +9,13 @@ const SelectContainer = ({ showFriends }) => {
 
     const [show, setshow] = useState(false)
     const { user, users, setusers, friends, setfriends, sharewith, cancleButtonHandler } = useContext(CreateTaskContext);
+    const [send, setsend] = useState("select")
 
     useEffect(() => {
-        if (!showFriends && (!user.trim() || !user.startsWith("_")))
+        if (showFriends && (!user.trim() || !user.startsWith("_")))
             return;
         setshow(true);
         const fetchApi = async () => {
-            if (!user.trim() || !user.startsWith("_") || user.length < 1)
-                return
             const { error, result } = await getTaskApi(`find-user?search=${user}`)
             if (!error) {
                 setusers(result);
@@ -46,8 +45,6 @@ const SelectContainer = ({ showFriends }) => {
         setshow(false);
     }, []);
 
-    const [send, setsend] = useState("select")
-
     const sendHandler = (username) => {
         if (friends.includes(username)) {
             setfriends((prev) => {
@@ -58,31 +55,30 @@ const SelectContainer = ({ showFriends }) => {
                 return [...prev, username];
             })
         }
-        cancleButtonHandler();
     }
 
     return (
         <div className='' style={{ height: "310px" }}>
             <div className="mt-2 px-2 py-3 border border-danger border-2" style={{ maxHeight: "300px", overflow: "auto" }}>
-
-                <div>friends {JSON.stringify(friends)}</div>
-                <div>sharewith {JSON.stringify(sharewith)}</div>
-
-
-                {!showFriends ? <>
+                {user ? <>
+                    <h5 className='text-center fw-bold'>Search Result</h5>
+                    <hr className='my-0' />
                     {users && users.map((data, item) => <><UserName key={item} username={data.username} send={send} setsend={setsend} sendHandler={sendHandler} /></>)}
                     {users.length == 0 && !show ? <div>Not Found! </div> : ''}
 
-                </> : <>
-                    {friends && friends.map((data, item) => <>
-                        <UserName key={item} username={data} send={send} setsend={setsend} sendHandler={sendHandler} />
-                    </>)}
-                    {friends.length === 0 && !show ? <div>no friends found</div> : ''}
-                </>
-                }
+                </> :
+                    <>
+                        <h5 className='text-center fw-bold'>Friends</h5>
+                        <hr className='my-0' />
+                        {friends && friends.map((data, item) => <>
+                            <UserName key={item} username={data} send={send} setsend={setsend} sendHandler={sendHandler} />
+                        </>)}
+                        {friends.length === 0 && !show ? <div>no friends found</div> : ''}
+                    </>}
+
                 {show ? <ContentLoader /> : ''}
             </div>
-        </div>
+        </div >
     )
 }
 

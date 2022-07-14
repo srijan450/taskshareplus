@@ -1,18 +1,47 @@
 import React, { useContext } from 'react'
-import { Popups } from '../../Context';
+import { Popups, UserContext } from '../../Context';
 
 const api = () => {
     const { setMODAL, setLOADER } = useContext(Popups);
+    const { USER, setUSER } = useContext(UserContext);
+
+
+
+    const deleteToken = () => {
+        if (localStorage.key('token')) {
+            localStorage.removeItem('token');
+        }
+    }
+
+    const saveToken = (data) => {
+        localStorage.setItem('token', JSON.stringify(data));
+    }
+
+    const getToken = () => {
+        if (localStorage.getItem('token'))
+            return JSON.parse(localStorage.getItem('token'));
+        return null;
+    }
+
+    const loginauth = (user, data) => {
+        setUSER(user);
+        saveToken(data);
+    }
+
+
 
     const getTaskApi = async (uri, loader = false) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+            const token = getToken();
+            const req = await fetch(`http://localhost:5000/${uri}`, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
-                }, credentials: 'include'
+                    'authtoken': token,
+                }
             });
+
             const sdata = await req.json();
             setLOADER(false);
             return sdata;
@@ -27,12 +56,14 @@ const api = () => {
     const postApi = async (uri, loader = false, data) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+            const token = getToken();
+            const req = await fetch(`http://localhost:5000/${uri}`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
-                }, credentials: 'include'
+                    'authtoken': token,
+                }
             });
             const sdata = await req.json();
             return sdata;
@@ -47,7 +78,7 @@ const api = () => {
     const patchAPI = async (uri, loader = false, data) => {
         setLOADER(loader);
         try {
-            const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+            const req = await fetch(`http://localhost:5000/${uri}`, {
                 method: "PATCH",
                 body: JSON.stringify(data),
                 headers: {
@@ -86,11 +117,13 @@ const api = () => {
                 <p className='mb-0 mt-1 d-flex justify-content-center'><button className='btn btn-danger' onClick={async () => {
                     setLOADER(true);
                     try {
-                        const req = await fetch(`https://best-task-app.herokuapp.com/task/${id}`, {
+                        const token = getToken();
+                        const req = await fetch(`http://localhost:5000/task/${id}`, {
                             method: "DELETE",
                             headers: {
                                 'Content-Type': 'application/json',
-                            }, credentials: 'include'
+                                'authtoken': token,
+                            }
                         });
                         const sdata = await req.json();
                         setLOADER(false);
@@ -113,9 +146,9 @@ const api = () => {
         });
 
     }
-    return { getTaskApi, postApi, patchAPI, markAsComplete, markAsIncomplete, deleteTaskHandler }
+    return { getTaskApi, postApi, patchAPI, markAsComplete, markAsIncomplete, deleteTaskHandler, loginauth, getToken, deleteToken }
 }
 
 
 
-export default api
+export default api;
