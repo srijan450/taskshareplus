@@ -4,7 +4,7 @@ const userModel = require("../models/userModel");
 
 const authenticate = async (req, res, next) => {
     try {
-        const token = req.cookies.token;
+        const token = req.headers.authtoken;
         const decode = jwt.verify(token, "123456789");
         const user = await userModel.findOne({ _id: decode._id, "tokens.token": token });
         if (!user)

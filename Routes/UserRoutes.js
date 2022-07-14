@@ -11,9 +11,10 @@ userRoute.get("/reset-password", resetPasswordpage)
 userRoute.post("/reset-password", resetPassword)
 userRoute.post("/sign-in", signIn);
 userRoute.get("/sign-out", authenticate, signOut);
-userRoute.get("/validate-user", authenticate, user);
+userRoute.post("/validate-user", authenticate, user);
 userRoute.get("/find-user", authenticate, getUserByUsername);
 userRoute.get("/find-friends", authenticate, findFriends);
+
 
 
 module.exports = userRoute;

@@ -1,4 +1,4 @@
-const sharingModel = require("../models/sharingModel");
+
 const taskModal = require("../models/taskModal");
 
 module.exports.createTask = async (req, res) => {
@@ -194,6 +194,40 @@ module.exports.getSharedTasks = async (req, res) => {
 //         res.status(500).send({ error: "Internal server error" });
 //     }
 // }
+
+module.exports.userTaskcount = async (req, res) => {
+    try {
+        const tasks = await taskModal.find({ $or: [{ owner: req.user._id }, { "sharewith.username": req.user.username }] });
+        const userTasks = tasks.filter((item) => {
+            return (item.completed === false && item.shared === false && item.pending === false);
+        })
+
+        const completedTasks = tasks.filter((item) => {
+            return (item.completed === true && item.shared === false && item.pending === false);
+        });
+
+        const pendingTasks = tasks.filter((item) => {
+            return (item.completed === false && item.shared === false && item.pending === true);
+        });
+
+        const sharedTasks = tasks.filter((item) => {
+            return (item.completed === false && item.shared === true && item.pending === false);
+        });
+
+        const completedSharedTasks = tasks.filter((item) => {
+            return (item.completed === true && item.shared === true && item.pending === false);
+        });
+
+        const pendingSharedTasks = tasks.filter((item) => {
+            return (item.completed === false && item.shared === true && item.pending === true);
+        });
+
+        res.status(200).json({ yourTasks: userTasks.length, completedTasks: completedTasks.length, pendingTasks: pendingTasks.length, sharedTasks: sharedTasks.length, completedSharedTasks: completedSharedTasks.length, pendingSharedTasks: pendingSharedTasks.length })
+    }
+    catch (e) {
+        res.status(200).json({ yourTasks: 0, completedTasks: 0, pendingTasks: 0, sharedTasks: 0, completedSharedTasks: 0, pendingSharedTasks: 0 })
+    }
+}
 
 module.exports.markAs = async (req, res) => {
     try {

@@ -77,8 +77,8 @@ module.exports.signIn = async (req, res) => {
         const userReq = await userModel.findByCredentials(req.body);
         if (userReq) {
             const token = await userReq.genrateToken();
-            res.cookie('token', token, { httpsOnly: true });
-            res.status(201).json({ success: true, error: false, user: userReq });
+            // res.cookie('token', token, { httpsOnly: true });
+            res.status(201).json({ success: true, error: false, user: userReq, token });
         }
         else {
             res.status(406).json({ success: false });
@@ -104,7 +104,7 @@ module.exports.signOut = async (req, res) => {
 module.exports.user = (req, res) => {
     try {
         const user = req.user;
-        res.status(200).json({ user });
+        res.status(201).json({ user });
     } catch (e) {
         res.status(404).json({ error: "please sign in to acceess this page!" });
     }
