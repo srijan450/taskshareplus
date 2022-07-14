@@ -51,7 +51,7 @@ const NavBar = () => {
         setLOADER(true);
         try {
             const token = getToken();
-            const res = await fetch("http://localhost:5000/sign-out", { headers: { 'authtoken': token } });
+            const res = await fetch("https://best-task-app.herokuapp.com/sign-out", { headers: { 'authtoken': token } });
             const { error, success } = await res.json();
             if (success) {
                 deleteToken();

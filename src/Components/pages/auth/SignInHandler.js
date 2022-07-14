@@ -84,7 +84,7 @@ const SignInHandler = () => {
 
             if (email_user && password) {
                 setLOADER(true);
-                const res = await fetch('http://localhost:5000/sign-in', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" }, credentials: 'include' });
+                const res = await fetch('https://best-task-app.herokuapp.com/sign-in', { method: 'POST', body: (JSON.stringify(fdata)), headers: { "Content-Type": "application/json" }, credentials: 'include' });
                 const response = await res.json()
                 const { error, success, user, token } = response;
                 if (error && !success) {
@@ -99,7 +99,7 @@ const SignInHandler = () => {
                 }
                 else if (success) {
                     setfdata({ email_user: "", password: "" })
-                    loginauth(user,token);
+                    loginauth(user, token);
                 }
                 setLOADER(false);
             }
