@@ -8,7 +8,7 @@ const transport = nodeMailer.createTransport({
     requireTLS: true,
     auth: {
         user: process.env.Email,
-        pass: process.env.EMAIL_PASS
+        pass: process.env.EMAIL_PASS,
     }
 });
 
@@ -48,6 +48,7 @@ const sendMail = async (to, link, subject = "Verify Your Email", text = "") => {
     const promise = new Promise((resolve, reject) => {
         transport.sendMail(mailOptions, (error, info) => {
             if (error) {
+                console.log(error);
                 resolve(false)
             }
             else {

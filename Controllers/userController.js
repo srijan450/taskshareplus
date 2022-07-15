@@ -31,6 +31,7 @@ module.exports.signUp = async (req, res) => {
         req.body.password = await hashPassword(req.body.password);
         const userReq = new userModel({ ...req.body });
         await userReq.save();
+        
         const mailed = await userReq.sendVerificationEmail();
         if (mailed) {
             res.status(201).json({ success: true });
