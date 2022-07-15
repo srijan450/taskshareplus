@@ -162,13 +162,15 @@ module.exports.getAllTasks = async (req, res) => {
 }
 
 module.exports.getSharedTasks = async (req, res) => {
+
     try {
+
         const option = { completed: false, pending: false };
         if (req.query.pending)
             option.pending = (req.query.pending === 'true');
         if (req.query.completed)
             option.completed = (req.query.completed === 'true');
-        const task = await taskModal.find({ $and: [{ $or: [{ owner: req.user._id }, { "sharewith.username": req.user.username }] }, { completed: option.completed, pending: option.pending, shared: true }] }).limit(req.body.limit).sort(req.query.sortBy);
+        const task = await taskModal.find({ $and: [{ $or: [{ owner: req.user._id }, { "sharewith.username": req.user.username }] }, { completed: option.completed, pending: option.pending, shared: true }] }).sort({ updatedAt: req.query.sortBy }).limit(req.query.limit);
         res.status(200).json({ task });
     }
     catch (e) {
