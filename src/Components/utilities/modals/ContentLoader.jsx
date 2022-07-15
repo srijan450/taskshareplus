@@ -1,9 +1,9 @@
 import React from 'react'
 import Spinner from './Spinner'
 
-const ContentLoader = () => {
+const ContentLoader = ({ border }) => {
     return (
-        <div className='text-center border py-1'>
+        <div className={`text-center py-1 ${border ? 'border' : ''} bg-light`}>
             <Spinner />
         </div>
     )

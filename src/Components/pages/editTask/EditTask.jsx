@@ -127,8 +127,6 @@ const EditTask = () => {
                 if (error) {
                     console.log(error);
                 } else {
-                    const { _id, shared } = task;
-                    quill.root.innerHTML = "";
                     e.target.header.style.borderColor = "#86b7fe";
                     e.target.header.style.boxShadow = "0 0 0 .25rem rgba(13,110,253,.25)";
                 }
@@ -165,7 +163,7 @@ const EditTask = () => {
                                     <Button side='back' classes='me-4' />
                                     <label htmlFor="image">
                                         <div className='img'>
-                                            <img src={fdata.taskIcon !== "" ? `https://best-task-app.herokuapp.com/taskimage/${fdata._id}` : "/images/no-image.jpg"} id="iconImage" alt="cannot display image" title='task icon' />
+                                            <img src={fdata.taskIcon !== "" ? `https://best-task-app.herokuapp.com/taskimage/${fdata._id}` : "/https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"} id="iconImage" alt="cannot display image" title='task icon' />
                                         </div>
                                         <input type="file" id="image" name="taskIcon" className='d-none' accept=".png, .jpg, .jpeg" onChange={handler} value={fdata.iconImage} form="updateTaskform" />
                                     </label>

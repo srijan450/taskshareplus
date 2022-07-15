@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import api from '../../API/api';
 
 const TaskCategoryHandler = () => {
-    const [tasks, settasks] = useState([]);
+    const [tasks, settasks] = useState(null);
     const [skip, setskip] = useState(0)
     const { getTaskApi, markAsComplete, deleteTaskHandler } = api();
 

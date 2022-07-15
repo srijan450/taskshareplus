@@ -20,7 +20,7 @@ const Menu = () => {
                             <a href='#shared-task' className='dropdown-item'>Shared Task</a>
                             <a href='#completed-shared-task' className='dropdown-item'>Completed Shared Task</a>
                             <a href='#pending-shared-task' className='dropdown-item'>Pending Shared Task</a>
-                            <Link to="/profile" className='dropdown-item'>profile</Link>
+                            <Link to="/profile" className='dropdown-item'>Profile</Link>
                             <Link to="/" className='dropdown-item'>Invite</Link>
                         </ul>
                     </div>

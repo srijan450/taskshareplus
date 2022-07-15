@@ -8,7 +8,7 @@ const SelectContainer = ({ showFriends }) => {
     const { getTaskApi } = api();
 
     const [show, setshow] = useState(false)
-    const { user, users, setusers, friends, setfriends, sharewith, cancleButtonHandler } = useContext(CreateTaskContext);
+    const { user, users, setusers, friends, setfriends } = useContext(CreateTaskContext);
     const [send, setsend] = useState("select")
 
     useEffect(() => {

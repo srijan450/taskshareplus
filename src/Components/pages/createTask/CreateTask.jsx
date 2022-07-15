@@ -19,6 +19,7 @@ const CreateTask = () => {
     const [sharewith, setsharewith] = useState([]); // for selected users defaults friends 
     const [showFriends, setshowFriends] = useState(true) // show sidebar 2nd container
     const [friends, setfriends] = useState([]); // show previous friends
+    const [redirect, setredirect] = useState(false)
     const { getToken } = api()
 
     const { id } = useParams("id");
@@ -91,8 +92,9 @@ const CreateTask = () => {
                     const { _id, shared } = task;
                     setfdata({ header: "", body: "", durationDate: "", durationTime: "", taskIcon: "", shared: false });
                     quill.root.innerHTML = "";
-                    e.target.header.style.borderColor = "#86b7fe";
+                    e.target.style.borderColor = "transparent";
                     e.target.header.style.boxShadow = "0 0 0 .25rem rgba(13,110,253,.25)";
+                    setredirect(true)
                 }
 
             }
@@ -108,8 +110,11 @@ const CreateTask = () => {
     }
 
 
-    // if (!USER)
-    //     return <Navigate to='/sign-in' />
+    if (!USER)
+        return <Navigate to='/sign-in' />
+
+    if (redirect)
+        return <Navigate to='/main-menu' />
 
     return (
         <>

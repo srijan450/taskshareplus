@@ -116,7 +116,6 @@ const SignUpHandler = () => {
                     if (error.password) {
                         setBorder(e.target.elements.password, false, error.password);
                     }
-
                 }
                 else if (success) {
                     setfdata({ name: "", email: "", password: "", username: "" });

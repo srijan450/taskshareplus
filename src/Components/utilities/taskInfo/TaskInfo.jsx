@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import TaskInfoAccordion from '../taskInfoComponent/TaskInfoAccordion'
 import api from '../../API/api';
+import ContentLoader from '../modals/ContentLoader';
 
 const TaskInfo = ({ action, notask }) => {
     const { getTaskApi } = api();
-    const [tasks, settasks] = useState([])
+    const [tasks, settasks] = useState(null)
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -37,7 +38,8 @@ const TaskInfo = ({ action, notask }) => {
                     <TaskInfoAccordion data={data} key={data._id} action={action} />
                 </>)}
             </div>
-            {tasks.length == 0 ? <div className='text-danger'>{notask}</div> : ''}
+            {tasks == null && <ContentLoader border={false}/>}
+            {tasks && tasks.length == 0 ? <div className='text-danger'>{notask}</div> : ''}
         </>
     )
 }

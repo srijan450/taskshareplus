@@ -67,7 +67,7 @@ const PieChart = () => {
 
     return (
         (show && Data) && <>
-            <h3 className='fw-bolder text-center'>Actitity</h3>
+            <h3 className='fw-bolder text-center'>Activity</h3>
             <div className='w-50 mx-auto border my-0 py-0 ps-2'><Doughnut type='doughnut' data={Data} options={{ plugins: { legend: { position: 'right', labels: { usePointStyle: true } } } }} plugins={[{}]} /></div>
         </>
     )
