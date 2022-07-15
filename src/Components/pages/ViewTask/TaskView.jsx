@@ -41,7 +41,7 @@ const TaskView = () => {
                             <div className='col-3 d-flex align-items-center'>
                                 <Button side='back' classes='me-4' />
                                 <div className='img'>
-                                    <img src={task.taskIcon !== "" ? `https://best-task-app.herokuapp.com/taskimage/${task._id}` : "/https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"} alt="" />
+                                    <img src={task.taskIcon !== "" ? `https://best-task-app.herokuapp.com/taskimage/${task._id}` : "https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"} alt="" />
                                 </div>
                             </div>
                             <div className='col-8 text-end'>
