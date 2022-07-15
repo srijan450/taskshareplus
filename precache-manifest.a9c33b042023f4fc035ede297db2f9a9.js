@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "fa514ef1e2431a03f87f",
+    "revision": "ffca8aef1d7fb318c9dd",
     "url": "/best-task-app/static/css/main.66169fe2.chunk.css"
   },
   {
-    "revision": "fa514ef1e2431a03f87f",
-    "url": "/best-task-app/static/js/main.7844cadf.chunk.js"
+    "revision": "ffca8aef1d7fb318c9dd",
+    "url": "/best-task-app/static/js/main.db365851.chunk.js"
   },
   {
     "revision": "2d99347c0083fdbb79c4",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/best-task-app/static/js/2.e1fe8eb0.chunk.js"
   },
   {
-    "revision": "cf21c3c03861d5bd00fabf1d4ebe46dc",
+    "revision": "28c58d8d00910a870796042b5523558c",
     "url": "/best-task-app/index.html"
   }
 ];
