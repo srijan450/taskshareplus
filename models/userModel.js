@@ -91,7 +91,7 @@ userSchema.methods.sendVerificationEmail = async function () {
   await user.save();
   const mailed = await sendMail(
     user.email,
-    `http://localhost:5000/verify-email?id=${user._id}&token=${hash}`
+    `https://best-task-app.herokuapp.com/verify-email?id=${user._id}&token=${hash}`
   );
   return mailed;
 };
@@ -127,7 +127,7 @@ userSchema.statics.passwordReset = async function (email) {
     await user.save();
     const mailed = await sendMail(
       user.email,
-      `http://localhost:5000/reset-password?id=${user._id}&token=${hash}`,
+      `https://best-task-app.herokuapp.com/reset-password?id=${user._id}&token=${hash}`,
       "Reset Your Password",
       `Hello ${user.name} \n Please click on following button to go to reset password page.`
     );
