@@ -42,7 +42,6 @@ const Home = () => {
               flexDirection: "column",
               alignItems: "",
               justifyContent: "center",
-              // minHeight: "90vh",
             }}
           >
             <div className="bg-light pt-4 pb-5 rounded">
