@@ -18,7 +18,7 @@ const ForgotPassword = () => {
             <div className="fheader mb-4 text-center">
               <h2 className="my-0">Provide Account Details</h2>
               <p>password change link will be sent to your email</p>
-            </div>
+            </div> 
 
             <Input
               name="email"
