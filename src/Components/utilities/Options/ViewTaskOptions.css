@@ -21,3 +21,15 @@
     width: fit-content;
     display: none;
 }
+
+.threeDot{
+    border-radius: 20px;
+    position: relative;
+    width: 90vw !important;
+    background-color: white;
+    left: 0px;
+    top: 10px;
+    z-index: 1;
+    width: fit-content;
+    display: none;
+}

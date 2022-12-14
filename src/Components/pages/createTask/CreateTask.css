@@ -43,3 +43,8 @@ input::-webkit-clear-button {
     object-fit: contain;
     border-radius: 50%;
 }
+
+.ql-toolbar{
+    justify-content: start !important;
+    flex-wrap: wrap;
+}

@@ -1,3 +1,8 @@
 .task-body {
     max-height: 100px;
 }
+
+.text-justify{
+    text-align: justify;
+}
+

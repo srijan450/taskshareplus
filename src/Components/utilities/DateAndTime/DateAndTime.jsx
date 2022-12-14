@@ -1,33 +1,67 @@
-import React from 'react'
-import Calander from './Calander'
-import Clock from './Clock'
+import React from "react";
+import Calander from "./Calander";
+import Clock from "./Clock";
 
-const DateAndTime = ({ durationTime, durationDate, createdDate, _id }) => {
-    
-    return (
-        <div className='row justify-content-end'>
+const DateAndTime = ({
+  durationTime,
+  durationDate,
+  createdDate,
+  showDate = true,
+  showTime = true,
+  alignLeft = false,
+  _id,
+  status,
+}) => {
+  return (
+    <div
+      className={`d-flex ${
+        alignLeft ? "justify-content-start" : "justify-content-end"
+      }`}
+    >
+      {showDate && (
+        <>
+          {createdDate ? (
+            <>
+              <span>
+                <Calander date={createdDate} text="Start Date" />
+              </span>
+            </>
+          ) : (
+            ""
+          )}
 
-            {createdDate ? <>
-                <span className='col-4'>
-                    <Calander date={createdDate} text="Start Date" />
-                </span>
-            </> : ''
-            }
+          {durationDate ? (
+            <>
+              <span>
+                <Calander date={durationDate} text="End Date" />
+              </span>
+            </>
+          ) : (
+            ""
+          )}
+        </>
+      )}
+      {showTime && (
+        <>
+          {durationDate || durationTime ? (
+            <>
+              <span className="">
+                <Clock
+                  date={durationDate}
+                  time={durationTime}
+                  _id={_id}
+                  createdDate={createdDate}
+                  status={status}
+                />
+              </span>
+            </>
+          ) : (
+            ""
+          )}
+        </>
+      )}
+    </div>
+  );
+};
 
-            {durationDate ? <>
-                <span className='col-4'>
-                    <Calander date={durationDate} text="End Date" />
-                </span>
-            </> : " "
-            }
-
-            {durationDate || durationTime ? <>
-                <span className='col-4'>
-                    <Clock date={durationDate} time={durationTime} _id={_id} createdDate={createdDate} />
-                </span>
-            </> : ""}
-        </div>
-    )
-}
-
-export default DateAndTime
+export default DateAndTime;
