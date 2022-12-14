@@ -23,10 +23,11 @@ const UserName = ({ username, sendHandler, userImg, _id }) => {
 
   const getImage = async () => {
     const img = await axios.get(
-      `http://localhost:5000/profile-image/${username}`
+      `https://best-task-app.herokuapp.com/profile-image/${username}`
     );
     const { data } = await img;
-    if (data) setImage(`http://localhost:5000/profile-image/${username}`);
+    if (data)
+      setImage(`https://best-task-app.herokuapp.com/profile-image/${username}`);
   };
 
   return (

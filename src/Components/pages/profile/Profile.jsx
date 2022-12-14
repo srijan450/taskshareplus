@@ -21,7 +21,7 @@ const Profile = () => {
       formdata.append("profileImage", files[0]);
       document.getElementById("profile-image").src = URL.createObjectURL(file);
       const img = await axios.post(
-        "http://localhost:5000/profile-upload",
+        "https://best-task-app.herokuapp.com/profile-upload",
         formdata,
         { headers: { authtoken: token } }
       );
@@ -67,7 +67,7 @@ const Profile = () => {
                 <img
                   src={
                     USER.profileImage
-                      ? `http://localhost:5000/profile-image/${USER.username}`
+                      ? `https://best-task-app.herokuapp.com/profile-image/${USER.username}`
                       : "https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/nouserimage.webp"
                   }
                   id="profile-image"
