@@ -48,7 +48,7 @@ const TaskInfo = ({
             <img
               src={
                 taskIcon !== ""
-                  ? `https://best-task-app.herokuapp.com/taskimage/${_id}`
+                  ? `http://localhost:5000/taskimage/${_id}`
                   : "https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"
               }
               alt=""

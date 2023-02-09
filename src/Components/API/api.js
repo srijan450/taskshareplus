@@ -30,7 +30,7 @@ const api = () => {
     try {
       const token = getToken();
       setLOADER(loader);
-      const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+      const req = await fetch(`http://localhost:5000/${uri}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const api = () => {
     setLOADER(loader);
     try {
       const token = getToken();
-      const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+      const req = await fetch(`http://localhost:5000/${uri}`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -102,7 +102,7 @@ const api = () => {
   const patchAPI = async (uri, loader = false, data) => {
     setLOADER(loader);
     try {
-      const req = await fetch(`https://best-task-app.herokuapp.com/${uri}`, {
+      const req = await fetch(`http://localhost:5000/${uri}`, {
         method: "PATCH",
         body: JSON.stringify(data),
         headers: {
@@ -166,16 +166,13 @@ const api = () => {
                 setLOADER(true);
                 try {
                   const token = getToken();
-                  const req = await fetch(
-                    `https://best-task-app.herokuapp.com/task/${id}`,
-                    {
-                      method: "DELETE",
-                      headers: {
-                        "Content-Type": "application/json",
-                        authtoken: token,
-                      },
-                    }
-                  );
+                  const req = await fetch(`http://localhost:5000/task/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                      "Content-Type": "application/json",
+                      authtoken: token,
+                    },
+                  });
                   const sdata = await req.json();
                   setLOADER(false);
                   const { error, success } = sdata;

@@ -6,13 +6,13 @@ import "./home.css";
 const Home = () => {
   return (
     <div className="w-100" style={{ minHeight: "100vh" }}>
-      <div className="fullPager bg-purple">
+      <div className="fullPager bg-purple py-5">
         <div
           className="row w-100 justify-content-between align-items-center h-100 padding"
         >
           
           <div
-            className="col-5 col-lg-6 col-12 text-light"
+            className="col-lg-6 col-12 text-light"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -79,17 +79,138 @@ const Home = () => {
             <img src="./images/main-page.png" alt="" />
           </div>
         </div>
+        <div className="shadow py-5">
+          <div className="fs-5 mx-auto w-lg-50 w-75 text-justify">
+            Here is the platform for you, where you can manage your task more efficiently than ever. You can track your performance and all the tasks all together. 
+            Colaborate your friends and contribute together. Move forward as a boss and never let the thing go out of the time.
+            Track the pending item and work efficiently to get it done.
+          </div>
+        </div>
       </div>
+
+
+
       <div className="fullPager">
-        <h1>Key Features</h1>
-        <div className="row">
-          <div className="col-5"></div>
-          <div className="col-7">
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex flex-column justify-content-center align-items-center">
             <div>
-              <img src="" alt="" />
+          <h3>
+            Create Your task
+          </h3>
+          <ul className="d-md-none d-none">
+              <li>use custom task icon</li>
+              <li>use various styling for task discription</li>
+              <li>set date and time</li>
+              <li>share with people</li>
+          </ul>
+          </div>
+          </div>
+          <div className="col-md-7 col-12">
+          <div className="img_home w-100">
+              <img src="./images/CreateTask-1.png" alt="" />
             </div>
           </div>
         </div>
+
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex order-md-2 order-1 flex-column justify-content-center align-items-center">
+            <div>
+          <h3>
+            Set expected  time for completion
+          </h3>
+         <p>set your time and chase it</p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12 order-md-1 order-2">
+          <div className="img_home w-100">
+              <img src="./images/CreateTask-2.png" alt="" />
+            </div>
+          </div>
+        </div>
+        
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex flex-column justify-content-center align-items-center">
+            <div>
+            <h3>
+            Set expected  date for completion
+          </h3>
+         <p>set your date and time and complete it before task run into pending category</p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12">
+          <div className="img_home w-100">
+              <img src="./images/CreateTask-3.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex order-md-2 order-1 flex-column justify-content-center align-items-center">
+            <div>
+          <h3>
+            Share task with friends
+          </h3>
+         <p>you can share task with your friends by selecting share task checkbox and select the people with which you want this task to be shared.</p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12 order-md-1 order-2">
+          <div className="img_home w-100">
+              <img src="./images/CreateTask-4.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex flex-column justify-content-center align-items-center">
+            <div>
+          <h3>
+            Set Profile Image
+          </h3>
+          <p>
+          so that your friends can track you
+          </p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12">
+          <div className="img_home w-100">
+              <img src="./images/profile.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex order-md-2 order-1 flex-column justify-content-center align-items-center">
+            <div>
+          <h3>
+            Track All Tasks
+          </h3>
+          <p>Track all task all together, handling multiple task is ever easier</p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12 order-md-1 order-2">
+          <div className="img_home w-100">
+              <img src="./images/activity.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div className="row p-lg-5 p-md-4 p-3">
+          <div className="col-md-5 col-12 d-md-flex flex-column justify-content-center align-items-center">
+            <div>
+          <h3>
+            Take Benefit of task categories
+          </h3>
+         <p>automaticatlly changes the category of task as it run out of time</p>
+          </div>
+          </div>
+          <div className="col-md-7 col-12">
+          <div className="img_home w-100">
+              <img src="./images/category.png" alt="" />
+            </div>
+          </div>
+        </div>
+
       </div>
       <Footer />
     </div>

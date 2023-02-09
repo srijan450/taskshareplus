@@ -10,7 +10,7 @@ const Signup = () => {
   const { ferror, fdata, Handler, usernameHandler, submitHandler } =
     SignUpHandler();
   const { USER } = useContext(UserContext);
-  if (USER) return <Navigate to="/main-menu" />;
+  if (USER) return <Navigate to="/all-tasks" />;
 
   return (
     <>

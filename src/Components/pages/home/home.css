@@ -1,10 +1,12 @@
 .bg-purple{
     background: var(--bs-purple);
+    display: flex;
+    align-items: center;
 }
 
 .fullPager{
     width: 100vw;
-    height: 95vh;
+    min-height: 95vh;
 }
 
 .img_home{

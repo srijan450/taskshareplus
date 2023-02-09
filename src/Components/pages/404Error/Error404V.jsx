@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Error404V = () => {
   return (
     <div>Error404V
-      <Link to="/main-menu">Main Menu</Link>
+      <Link to="/all-tasks">All tasks</Link>
     </div>
 
   )

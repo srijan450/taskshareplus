@@ -42,7 +42,7 @@ const TaskCategory = () => {
       }
     }
   };
-  if (redirect) return <Navigate to="/main-menu" />;
+  if (redirect) return <Navigate to="/all-tasks" />;
 
   return (
     <div className="w-100 py-4" style={{ minHeight: "90vh" }}>

@@ -27,7 +27,7 @@ const ViewTaskOptions = ({ id, completed }) => {
 
 
     if (redirect)
-        return <Navigate to="/main-menu" />
+        return <Navigate to="/all-tasks" />
     return (
         <div>
             <button className='btn border' onClick={handler}><div className='openSetting'><SettingsIcon /></div></button>

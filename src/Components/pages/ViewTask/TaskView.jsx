@@ -56,7 +56,7 @@ const TaskView = () => {
                     <img
                       src={
                         task.taskIcon !== ""
-                          ? `https://best-task-app.herokuapp.com/taskimage/${task._id}`
+                          ? `http://localhost:5000/taskimage/${task._id}`
                           : "https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"
                       }
                       alt=""

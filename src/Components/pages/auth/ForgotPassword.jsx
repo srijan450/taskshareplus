@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const { ferror, fdata, emailHandler, submitHandler } =
     forgotPasswordHandler();
   const { USER } = useContext(UserContext);
-  if (USER) return <Navigate to="/main-menu" />;
+  if (USER) return <Navigate to="/all-tasks" />;
 
   return (
     <>

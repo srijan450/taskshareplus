@@ -15,7 +15,7 @@ const Signin = () => {
     submitHandler,
   } = SignInHandler();
   const { USER } = useContext(UserContext);
-  if (USER) return <Navigate to="/main-menu" />;
+  if (USER) return <Navigate to="/all-tasks" />;
 
   return (
     <>

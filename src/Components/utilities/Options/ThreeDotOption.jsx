@@ -30,7 +30,7 @@ const ThreeDotOption = ({ id, completed }) => {
 
   useEffect(() => {}, [completed]);
 
-  if (redirect) return <Navigate to="/main-menu" />;
+  if (redirect) return <Navigate to="/all-tasks" />;
   return (
     <div>
       <button className="btn border" onClick={handler}>

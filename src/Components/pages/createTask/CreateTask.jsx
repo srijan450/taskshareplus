@@ -141,7 +141,7 @@ const CreateTask = () => {
       try {
         const token = getToken();
         const res = await Axios.post(
-          "https://best-task-app.herokuapp.com/create-task",
+          "http://localhost:5000/create-task",
           formdata,
           { headers: { authtoken: token } }
         );
@@ -203,12 +203,6 @@ const CreateTask = () => {
     }
     setLOADER(false);
   };
-
-  // if (!USER)
-  //     return <Navigate to='/sign-in' />
-
-  // if (redirect)
-  //     return <Navigate to='/main-menu' />
 
   return (
     <>

@@ -167,7 +167,7 @@ const EditTask = () => {
       try {
         console.log(fdata._id);
         const token = getToken();
-        const url = "https://best-task-app.herokuapp.com/task/" + id;
+        const url = "http://localhost:5000/task/" + id;
         const res = await Axios.patch(url, formData, {
           headers: { authtoken: token },
         });
@@ -246,7 +246,7 @@ const EditTask = () => {
                       <img
                         src={
                           fdata.taskIcon !== ""
-                            ? `https://best-task-app.herokuapp.com/taskimage/${fdata._id}`
+                            ? `http://localhost:5000/taskimage/${fdata._id}`
                             : "https://raw.githubusercontent.com/srijan450/best-task-app/gh-pages/images/no-image.jpg"
                         }
                         id="iconImage"
