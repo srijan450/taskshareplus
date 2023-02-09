@@ -33,7 +33,7 @@ const App = () => {
       try {
         if (localStorage.getItem("token")) {
           const token = JSON.parse(localStorage.getItem("token"));
-          const res = await fetch("http://localhost:5000/validate-user", {
+          const res = await fetch("https://best-task-app.onrender.com/validate-user", {
             method: "POST",
             headers: {
               authtoken: token,

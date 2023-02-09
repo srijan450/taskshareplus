@@ -86,7 +86,7 @@ const SignUpHandler = () => {
         setBorder(e.target, false, "invalid username");
       } else {
         const res = await fetch(
-          `http://localhost:5000/ensureuniqueusername/${value}`
+          `https://best-task-app.onrender.com/ensureuniqueusername/${value}`
         );
         const { err } = await res.json();
         if (err) {
@@ -154,7 +154,7 @@ const SignUpHandler = () => {
 
       if (name && username && email && password) {
         setLOADER(true);
-        const res = await fetch("http://localhost:5000/sign-up", {
+        const res = await fetch("https://best-task-app.onrender.com/sign-up", {
           method: "POST",
           body: JSON.stringify(fdata),
           headers: { "Content-Type": "application/json" },
