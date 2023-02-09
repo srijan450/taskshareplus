@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 const options = {
     origin: 'https://srijan450.github.io',
-    // origin: 'http://localhost:3000',
+    // origin: 'http://localhost:3000/best-task-app',
     credentials: true,
     optionSuccessStatus: 200
 }
