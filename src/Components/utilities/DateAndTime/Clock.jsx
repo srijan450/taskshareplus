@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import "./Clock.css";
 const Clock = ({ time, date, _id, createdDate, status }) => {
   const [hhmmss, sethhmmss] = useState({
@@ -9,7 +9,7 @@ const Clock = ({ time, date, _id, createdDate, status }) => {
     mm: "00",
     ss: "00",
   });
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
   const [timerSeting, settimerSeting] = useState(false);
 
   useEffect(() => {

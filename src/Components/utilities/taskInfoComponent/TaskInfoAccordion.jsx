@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import DateAndTime from "../DateAndTime/DateAndTime";
 
 const TasckInfoAccordion = ({
@@ -19,7 +19,7 @@ const TasckInfoAccordion = ({
   action,
 }) => {
   const { USER } = useContext(UserContext);
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
   const markAsCompleted = async () => {
     await getTaskApi(`task/mark-as/${_id}?completed=true`);
   };

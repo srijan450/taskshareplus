@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../../../Context";
 import Input from "../../utilities/Input/Input";
-import forgotPasswordHandler from "./forgotPasswordHandler";
+import useForgotPasswordHandler from "./forgotPasswordHandler";
 
 const ForgotPassword = () => {
   const { ferror, fdata, emailHandler, submitHandler } =
-    forgotPasswordHandler();
+    useForgotPasswordHandler();
   const { USER } = useContext(UserContext);
   if (USER) return <Navigate to="/all-tasks" />;
 

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Popups, UserContext } from "../../Context";
 
-const api = () => {
+function useApi() {
   const { setMODAL, setLOADER } = useContext(Popups);
   const { USER, setUSER } = useContext(UserContext);
 
@@ -218,7 +218,7 @@ const api = () => {
                 }
                 setLOADER(false);
                 setMODAL({ show: false });
-              }}
+              } }
             >
               Yes
             </button>
@@ -239,6 +239,6 @@ const api = () => {
     getToken,
     deleteToken,
   };
-};
+}
 
-export default api;
+export default useApi;

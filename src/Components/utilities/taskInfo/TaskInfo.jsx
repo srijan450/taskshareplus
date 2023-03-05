@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import TaskInfoAccordion from "../taskInfoComponent/TaskInfoAccordion";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import ContentLoader from "../modals/ContentLoader";
 
 const TaskInfo = ({ action, notask }) => {
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
   const [tasks, settasks] = useState(null);
 
   useEffect(() => {

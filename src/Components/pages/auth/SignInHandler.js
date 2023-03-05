@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Popups, UserContext } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 
 const regex = [
   /^[_]{1,2}[a-z]{4,}[0-9]{0,3}[.]{0,2}[_]{0,2}$/,
@@ -11,7 +11,7 @@ const regex = [
 const SignInHandler = () => {
   const { setLOADER, setMODAL } = useContext(Popups);
   const { setUSER } = useContext(UserContext);
-  const { loginauth } = api();
+  const { loginauth } = useApi();
 
   const [ferror, setferror] = useState({
     email_user: "",

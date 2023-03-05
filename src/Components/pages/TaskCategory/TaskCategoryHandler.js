@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import api from '../../API/api';
+import useApi from '../../API/api';
 
 const TaskCategoryHandler = () => {
     const [tasks, settasks] = useState(null);
     const [skip, setskip] = useState(0)
-    const { getTaskApi, markAsComplete, deleteTaskHandler } = api();
+    const { getTaskApi, markAsComplete, deleteTaskHandler } = useApi();
 
     const verifyTaskCategoryAndRespond = async (name) => {
         if (name === 'your-tasks') {

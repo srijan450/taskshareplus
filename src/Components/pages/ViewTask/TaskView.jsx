@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import Calander from "../../utilities/DateAndTime/Calander";
 import Clock from "../../utilities/DateAndTime/Clock";
 import ViewTaskOptions from "../../utilities/Options/ViewTaskOptions";
@@ -12,7 +12,7 @@ import { UserContext } from "../../../Context";
 const TaskView = () => {
   const { USER } = useContext(UserContext);
   const { id } = useParams("id");
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
   const [task, settask] = useState(null);
   const [error, seterror] = useState(false);
   const [owner, setOwner] = useState("You");

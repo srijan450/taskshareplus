@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import ContentLoader from "../modals/ContentLoader";
 import UserName from "./users/UserName";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import { CreateTaskContext } from "../../../Context";
 
 const SelectContainer = ({ showFriends }) => {
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
 
   const [show, setshow] = useState(false);
   const { user, users, setusers, friends, setfriends } =

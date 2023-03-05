@@ -7,7 +7,7 @@ import Editor from "../../utilities/editor/Editor.jsx";
 import { CreateTaskContext, Popups, UserContext } from "../../../Context";
 import { Navigate, useParams } from "react-router-dom";
 import Sidebar from "../../utilities/createTaskSidebar/Sidebar";
-import api from "../../API/api";
+import useApi from "../../API/api";
 
 const CreateTask = () => {
   const [quill, setquill] = useState(null); // editor
@@ -27,7 +27,7 @@ const CreateTask = () => {
   const [showFriends, setshowFriends] = useState(true); // show sidebar 2nd container
   const [friends, setfriends] = useState(null); // show previous friends
   const [redirect, setredirect] = useState(false);
-  const { getToken } = api();
+  const { getToken } = useApi();
 
   const { id } = useParams("id");
 

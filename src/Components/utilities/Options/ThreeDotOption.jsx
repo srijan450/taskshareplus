@@ -8,12 +8,12 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import "./ViewTaskOptions.css";
 import { Link, Navigate } from "react-router-dom";
 import { Popups } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import { useEffect } from "react";
 
 const ThreeDotOption = ({ id, completed }) => {
   const [show, setshow] = useState(false);
-  const { markAsComplete, markAsIncomplete, deleteTaskHandler } = api();
+  const { markAsComplete, markAsIncomplete, deleteTaskHandler } = useApi();
   const handler = () => {
     window.$(`#${id}`).toggle(500, () => {
       if (!show) {

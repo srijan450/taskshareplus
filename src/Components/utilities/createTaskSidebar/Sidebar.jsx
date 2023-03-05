@@ -1,13 +1,13 @@
 import Input from "../Input/Input.jsx";
 import React, { useContext, useState } from "react";
-import sidebarHandler from "./sidebarHandler";
+import useSidebarHandler from "./sidebarHandler";
 import SearchIcon from "@mui/icons-material/Search";
 import "./sidebar.css";
 import SelectContainer from "../selectUser/SelectContainer.jsx";
 import { CreateTaskContext } from "../../../Context.js";
 import ContentLoader from "../modals/ContentLoader.jsx";
 const Sidebar = () => {
-  const { usernameHandler, cancleButtonHandler } = sidebarHandler();
+  const { usernameHandler, cancleButtonHandler } = useSidebarHandler();
   const { user, showFriends } = useContext(CreateTaskContext);
 
   return (

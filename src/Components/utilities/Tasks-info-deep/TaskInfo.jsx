@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import "./style.css";
 import { UserContext } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import Clock from "../DateAndTime/Clock";
 import ViewTaskOptions from "../Options/ViewTaskOptions";
 import ThreeDotOption from "../Options/ThreeDotOption";
@@ -29,7 +29,7 @@ const TaskInfo = ({
   ind,
   deleteTask,
 }) => {
-  const { deleteTaskHandler } = api();
+  const { deleteTaskHandler } = useApi();
 
   const { USER } = useContext(UserContext);
 

@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { Popups, UserContext } from '../../../Context';
-import api from '../../API/api';
+import useApi from '../../API/api';
 
 
 const regex = [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/];
 
-const forgotPasswordHandler = () => {
+const useForgotPasswordHandler = () => {
     const { setLOADER, setMODAL } = useContext(Popups);
 
     const [ferror, setferror] = useState({ email: "", emailecolor: "" });
     const [fdata, setfdata] = useState({ email: "" });
     const [valid, setvalid] = useState({ email: false });
-    const { postApi } = api();
+    const { postApi } = useApi();
 
     const setBorder = (e, val = false, text = "", color = "danger") => {
         if (val) {
@@ -77,4 +77,4 @@ const forgotPasswordHandler = () => {
     return { ferror, fdata, emailHandler, submitHandler };
 }
 
-export default forgotPasswordHandler;
+export default useForgotPasswordHandler;

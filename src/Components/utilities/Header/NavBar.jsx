@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Popups, UserContext } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 
 const NavBar = () => {
   const { USER, setUSER } = useContext(UserContext);
   const { setLOADER, setMODAL } = useContext(Popups);
   const location = useLocation();
-  const { getToken, deleteToken } = api();
+  const { getToken, deleteToken } = useApi();
   const [active, setActive] = useState({});
 
   useEffect(() => {

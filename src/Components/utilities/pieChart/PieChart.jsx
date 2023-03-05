@@ -7,7 +7,7 @@ import {
   LogarithmicScale,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import { useState } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -15,7 +15,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const PieChart = () => {
   const [show, setshow] = useState(false);
   const [Data, setData] = useState(null);
-  const { getTaskApi } = api();
+  const { getTaskApi } = useApi();
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await getTaskApi("tasks-count-category-wise");

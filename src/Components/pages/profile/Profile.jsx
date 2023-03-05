@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { Popups, UserContext } from "../../../Context";
-import api from "../../API/api";
+import useApi from "../../API/api";
 import Button from "../../utilities/Navigation/Button";
 import "./profile.css";
 
 const Profile = () => {
   const { USER } = useContext(UserContext);
   const { setLOADER, setMODAL } = useContext(Popups); // modal and loader
-  const { getToken } = api();
+  const { getToken } = useApi();
 
   const handler = async (e) => {
     const { name, value, files } = e.target;

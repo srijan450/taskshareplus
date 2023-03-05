@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { CreateTaskContext } from '../../../Context';
 
-const sidebarHandler = () => {
+const useSidebarHandler = () => {
     const { setuser, setshowFriends } = useContext(CreateTaskContext);
 
     const setBorder = (e, val = false, reset = false) => {
@@ -41,4 +41,4 @@ const sidebarHandler = () => {
     return { usernameHandler, setBorder, cancleButtonHandler }
 }
 
-export default sidebarHandler
+export default useSidebarHandler

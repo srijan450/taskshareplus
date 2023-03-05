@@ -7,12 +7,12 @@ import AssignmentLateIcon from '@mui/icons-material/AssignmentLate';
 import './ViewTaskOptions.css';
 import { Link, Navigate } from 'react-router-dom';
 import { Popups } from '../../../Context';
-import api from '../../API/api';
+import useApi from '../../API/api';
 import { useEffect } from 'react';
 
 const ViewTaskOptions = ({ id, completed }) => {
 
-    const { markAsComplete, markAsIncomplete, deleteTaskHandler } = api();
+    const { markAsComplete, markAsIncomplete, deleteTaskHandler } = useApi();
     const handler = () => {
         window.$('.showsetting').toggle(500);
     }

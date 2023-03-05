@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { CreateTaskContext } from "../../../../Context";
-import api from "../../../API/api";
+import useApi from "../../../API/api";
 
 const UserName = ({ username, sendHandler, userImg, _id }) => {
   const { user, sharewith, setsharewith, friends, setfriends, users } =
