@@ -1,4 +1,4 @@
-# best-task-app
+# taskshareplus
 Task App in MERN for productivity
 
 Client Side Codes (main branch): https://github.com/srijan450/best-task-app
