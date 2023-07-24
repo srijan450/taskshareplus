@@ -91,10 +91,16 @@ const Signup = () => {
           <div className="text-center px-5">
             <h3 className="my-5">Glad To See You!</h3>
             <p style={{ textAlign: "justify" }}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-              placeat est similique provident dolores voluptas atque maxime
-              dignissimos reprehenderit? Ullam sequi quaerat officiis,
-              voluptates sapiente odio numquam voluptas a eius?
+              Welcome to <b>TaskShare+</b> - Your gateway to seamless task management!
+              <br/><br/>
+              Sign up now and unlock a world of productivity. With TaskShare+,
+              you can effortlessly create and manage tasks, collaborate with
+              your team, and stay on top of your projects. Get started by
+              providing a few details, and you'll be on your way to a more
+              organized and efficient workflow. Join our growing community of
+              task achievers and experience the power of TaskShare+ firsthand.
+              <br/><br/>
+              Sign up today and let productivity soar to new heights!
             </p>
           </div>
         </div>

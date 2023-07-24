@@ -89,7 +89,7 @@ const NavBar = () => {
             height="24"
             className="d-inline-block align-text-top"
           />
-          &nbsp;Task App
+          &nbsp;<em><b>TaskShare+</b></em>
         </Link>
         <button
           className="navbar-toggler"

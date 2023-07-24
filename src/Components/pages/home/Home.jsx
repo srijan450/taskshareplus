@@ -22,7 +22,7 @@ const Home = () => {
             }}
           >
             <h1>
-              Introducing <span className="text-uppercase">task app</span>, all
+              Introducing TaskShare+, all
               new way to manage your tasks
             </h1>
 

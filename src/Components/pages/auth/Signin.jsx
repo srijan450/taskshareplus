@@ -74,10 +74,11 @@ const Signin = () => {
           <div className="text-center px-5">
             <h3 className="my-5">Welcome Back!</h3>
             <p style={{ textAlign: "justify" }}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-              placeat est similique provident dolores voluptas atque maxime
-              dignissimos reprehenderit? Ullam sequi quaerat officiis,
-              voluptates sapiente odio numquam voluptas a eius?
+              TaskShare+ empowers you to stay productive and organized, ensuring
+              you never miss a beat. Experience the power of TaskShare+ and
+              embark on a journey of increased efficiency and productivity.
+              <br/><br/>
+              Sign in now and take control of your tasks like never before!
             </p>
           </div>
         </div>
