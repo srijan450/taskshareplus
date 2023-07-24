@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/best-task-app/static/css/main.e740be65.css",
-    "main.js": "/best-task-app/static/js/main.aa91865d.js",
-    "index.html": "/best-task-app/index.html",
-    "main.e740be65.css.map": "/best-task-app/static/css/main.e740be65.css.map",
-    "main.aa91865d.js.map": "/best-task-app/static/js/main.aa91865d.js.map"
+    "main.css": "/taskshareplus/static/css/main.e740be65.css",
+    "main.js": "/taskshareplus/static/js/main.3fea7ace.js",
+    "index.html": "/taskshareplus/index.html",
+    "main.e740be65.css.map": "/taskshareplus/static/css/main.e740be65.css.map",
+    "main.3fea7ace.js.map": "/taskshareplus/static/js/main.3fea7ace.js.map"
   },
   "entrypoints": [
     "static/css/main.e740be65.css",
-    "static/js/main.aa91865d.js"
+    "static/js/main.3fea7ace.js"
   ]
 }
