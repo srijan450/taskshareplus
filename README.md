@@ -1,7 +1,7 @@
 # taskshareplus
 Task App in MERN for productivity
 
-Client Side Codes (main branch): https://github.com/srijan450/best-task-app
+Client Side Codes (main branch): https://github.com/srijan450/taskshareplus
 
 Server Side Codes (master branch): https://github.com/srijan450/best-task-app/tree/master
 
