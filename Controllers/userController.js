@@ -65,7 +65,6 @@ module.exports.verifyEmail = async (req, res) => {
 
 module.exports.signIn = async (req, res) => {
   try {
-    console.log("hello");
     const request = Object.keys(req.body);
     const validRequest = ["email_user", "password"];
     const isValidRequest = request.every((requested) =>
@@ -155,7 +154,7 @@ module.exports.resetPassword = async (req, res) => {
       if (user) {
         await user.save();
         return res.redirect(
-          "https://srijan450.github.io/best-task-app/sign-in"
+          "https://srijan450.github.io/taskshareplus/sign-in"
         );
       }
     }
